@@ -1,0 +1,1 @@
+insert into student_definition values (1, 'Igor', 'Tsalko', 'tracer.pk@mail.ru', 'tracer', 'passw');
