@@ -15,6 +15,7 @@ public class StudentConvertor {
         student.setLastName(definition.getLastName());
         student.setLogin(definition.getLogin());
         student.setEmail(definition.getEmail());
+        student.setLevel(definition.getLevel());
         return student;
     }
 

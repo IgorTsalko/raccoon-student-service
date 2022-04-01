@@ -29,8 +29,8 @@ public class StudentController {
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<Object> signUp(@RequestBody StudentRegistrationData studentRegistrationData) {
-        studentService.signUpStudent(studentRegistrationData);
+    public ResponseEntity<Object> signUp(@RequestBody StudentRegistrationData data) {
+        studentService.signUpStudent(data);
         return ResponseEntity.noContent().build();
     }
 }
