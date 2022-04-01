@@ -5,24 +5,20 @@ import com.raccoon.learnapp.student.api.Student;
 import com.raccoon.learnapp.student.impl.dao.StudentDefinition;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
+@AllArgsConstructor
 @Service
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
     private final StudentConvertor studentConvertor;
-
-    @Autowired
-    public StudentServiceImpl(StudentRepository studentRepository,
-                              StudentConvertor studentConvertor) {
-        this.studentRepository = studentRepository;
-        this.studentConvertor = studentConvertor;
-    }
 
     @Override
     public List<Student> getStudents() {
