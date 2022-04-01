@@ -19,7 +19,8 @@ public class StudentDefinition {
     @SequenceGenerator(
             name = "student_sequence",
             sequenceName = "student_sequence",
-            allocationSize = 1
+            allocationSize = 1,
+            initialValue = 50
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -40,6 +41,8 @@ public class StudentDefinition {
 
     @Column(nullable = false)
     private String password;
+
+    private Integer level;
 
     public Long getId() {
         return id;
@@ -89,6 +92,14 @@ public class StudentDefinition {
         this.password = password;
     }
 
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,6 +115,7 @@ public class StudentDefinition {
                 .append(email, that.email)
                 .append(login, that.login)
                 .append(password, that.password)
+                .append(level, that.level)
                 .isEquals();
     }
 
@@ -116,6 +128,7 @@ public class StudentDefinition {
                 .append(email)
                 .append(login)
                 .append(password)
+                .append(level)
                 .toHashCode();
     }
 }

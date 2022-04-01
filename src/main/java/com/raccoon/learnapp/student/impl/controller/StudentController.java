@@ -2,8 +2,11 @@ package com.raccoon.learnapp.student.impl.controller;
 
 import com.raccoon.learnapp.student.api.StudentService;
 import com.raccoon.learnapp.student.api.Student;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +18,6 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
@@ -23,5 +25,11 @@ public class StudentController {
     @GetMapping
     public List<Student> getStudents() {
         return studentService.getStudents();
+    }
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<Object> signUp(@RequestBody StudentRegistrationData studentRegistrationData) {
+        studentService.signUpStudent(studentRegistrationData);
+        return ResponseEntity.noContent().build();
     }
 }

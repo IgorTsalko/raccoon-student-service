@@ -8,7 +8,10 @@ public class Student {
     private Long id;
     private String firstName;
     private String lastName;
+    private String login;
     private String email;
+
+    private Integer level;
 
     public Long getId() {
         return id;
@@ -34,12 +37,28 @@ public class Student {
         this.lastName = lastName;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     @Override
@@ -54,7 +73,9 @@ public class Student {
                 .append(id, student.id)
                 .append(firstName, student.firstName)
                 .append(lastName, student.lastName)
+                .append(login, student.login)
                 .append(email, student.email)
+                .append(level, student.level)
                 .isEquals();
     }
 
@@ -64,7 +85,21 @@ public class Student {
                 .append(id)
                 .append(firstName)
                 .append(lastName)
+                .append(login)
                 .append(email)
+                .append(level)
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", level=" + level +
+                '}';
     }
 }

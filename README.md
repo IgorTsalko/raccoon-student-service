@@ -10,6 +10,6 @@ This is a simple application for additional learning technologies I'm interested
 * Apache Kafka
 * Lombok
 
-###Description
+### Description
 
 * Database PostgreSQL works on the separate Docker container with the host port 5444
