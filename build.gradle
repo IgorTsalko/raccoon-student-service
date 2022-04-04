@@ -15,6 +15,7 @@ repositories {
 dependencies {
     // todo: control versions
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.postgresql:postgresql'
 
@@ -25,6 +26,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+}
+
+configurations.all {
+    exclude module: 'spring-boot-starter-logging'
 }
 
 tasks.named('test') {

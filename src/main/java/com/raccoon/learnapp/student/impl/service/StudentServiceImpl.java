@@ -22,6 +22,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getStudents() {
+        log.debug("Retrieve all users");
         return studentRepository.findAll().stream()
                 .map(studentConvertor::convert)
                 .collect(Collectors.toList());
@@ -29,6 +30,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void signUpStudent(StudentRegistrationData data) {
+        log.debug("Sign up a new user: {}", data);
         StudentDefinition definition = studentConvertor.convert(data);
         studentRepository.save(definition);
     }

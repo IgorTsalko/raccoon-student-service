@@ -24,12 +24,13 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getStudents() {
-        //todo: add logging for all services
+        log.debug("Retrieve all users");
         return studentService.getStudents();
     }
 
     @PostMapping("/sign-up")
     public ResponseEntity<Object> signUp(@RequestBody StudentRegistrationData data) {
+        log.debug("Sign up a new user: {}", data);
         studentService.signUpStudent(data);
         return ResponseEntity.noContent().build();
     }
