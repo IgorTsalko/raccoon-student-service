@@ -1,7 +1,7 @@
 package com.raccoon.learnapp.student.impl.service;
 
 import com.raccoon.learnapp.student.api.Student;
-import com.raccoon.learnapp.student.impl.dao.StudentDefinition;
+import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class StudentServiceImplTest {
     @Test
     void shouldReturnStudents() {
         // given
-        StudentDefinition studentDef = new StudentDefinition();
+        StudentEntity studentDef = new StudentEntity();
         Student student = new Student();
 
         when(studentRepository.findAll()).thenReturn(List.of(studentDef));
@@ -50,7 +50,7 @@ class StudentServiceImplTest {
     void shouldSignUpStudent() {
         // given
         StudentRegistrationData registrationData = new StudentRegistrationData();
-        StudentDefinition studentDef = new StudentDefinition();
+        StudentEntity studentDef = new StudentEntity();
 
         when(studentConvertor.convert(registrationData)).thenReturn(studentDef);
 

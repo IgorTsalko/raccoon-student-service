@@ -1,6 +1,6 @@
 package com.raccoon.learnapp.student.impl;
 
-import com.raccoon.learnapp.student.impl.dao.StudentDefinition;
+import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 
 public class StudentTestData {
@@ -13,15 +13,15 @@ public class StudentTestData {
     public static final String PASSWORD = "password12345";
     public static final Integer LEVEL = 5;
 
-    public static StudentDefinition generateStudentDef() {
-        StudentDefinition definition = new StudentDefinition();
-        definition.setId(ID);
-        definition.setFirstName(FIRST_NAME);
-        definition.setLastName(LAST_NAME);
-        definition.setLogin(LOGIN);
-        definition.setEmail(EMAIL);
-        definition.setLevel(LEVEL);
-        return definition;
+    public static StudentEntity generateStudentEntity() {
+        StudentEntity entity = new StudentEntity();
+        entity.setId(ID);
+        entity.setFirstName(FIRST_NAME);
+        entity.setLastName(LAST_NAME);
+        entity.setLogin(LOGIN);
+        entity.setEmail(EMAIL);
+        entity.setLevel(LEVEL);
+        return entity;
     }
 
     public static StudentRegistrationData generateRegistrationData() {

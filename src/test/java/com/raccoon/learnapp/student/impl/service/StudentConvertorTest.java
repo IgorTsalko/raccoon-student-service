@@ -1,7 +1,7 @@
 package com.raccoon.learnapp.student.impl.service;
 
 import com.raccoon.learnapp.student.api.Student;
-import com.raccoon.learnapp.student.impl.dao.StudentDefinition;
+import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import static com.raccoon.learnapp.student.impl.StudentTestData.LEVEL;
 import static com.raccoon.learnapp.student.impl.StudentTestData.LOGIN;
 import static com.raccoon.learnapp.student.impl.StudentTestData.PASSWORD;
 import static com.raccoon.learnapp.student.impl.StudentTestData.generateRegistrationData;
-import static com.raccoon.learnapp.student.impl.StudentTestData.generateStudentDef;
+import static com.raccoon.learnapp.student.impl.StudentTestData.generateStudentEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = {MockitoExtension.class})
@@ -32,10 +32,10 @@ class StudentConvertorTest {
     @Test
     void shouldConvertDefinitionToModel() {
         // given
-        StudentDefinition definition = generateStudentDef();
+        StudentEntity entity = generateStudentEntity();
 
         // when
-        Student result = studentConvertor.convert(definition);
+        Student result = studentConvertor.convert(entity);
 
         // then
         assertThat(result.getId()).isEqualTo(ID);
@@ -52,7 +52,7 @@ class StudentConvertorTest {
         StudentRegistrationData data = generateRegistrationData();
 
         // when
-        StudentDefinition result = studentConvertor.convert(data);
+        StudentEntity result = studentConvertor.convert(data);
 
         // then
         assertThat(result.getId()).isNull();

@@ -2,7 +2,7 @@ package com.raccoon.learnapp.student.impl.service;
 
 import com.raccoon.learnapp.student.api.StudentService;
 import com.raccoon.learnapp.student.api.Student;
-import com.raccoon.learnapp.student.impl.dao.StudentDefinition;
+import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 import lombok.AllArgsConstructor;
@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void signUpStudent(StudentRegistrationData data) {
         log.debug("Sign up a new user: {}", data);
-        StudentDefinition definition = studentConvertor.convert(data);
-        studentRepository.save(definition);
+        StudentEntity entity = studentConvertor.convert(data);
+        studentRepository.save(entity);
     }
 }

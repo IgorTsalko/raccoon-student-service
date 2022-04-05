@@ -1,6 +1,7 @@
-package com.raccoon.learnapp.student.impl.dao;
+package com.raccoon.learnapp.student.impl.dao.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "student_definition")
-public class StudentDefinition {
+public class StudentEntity extends BaseEntity {
 
     @Id
     @SequenceGenerator(
