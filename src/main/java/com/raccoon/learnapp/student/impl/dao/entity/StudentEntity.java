@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(name = "student_definition")
+@SuppressWarnings("java:S2160")
 public class StudentEntity extends BaseEntity {
 
     @Id

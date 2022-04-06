@@ -30,6 +30,7 @@ dependencies {
 
 configurations.all {
     exclude module: 'spring-boot-starter-logging'
+    exclude module: 'hamcrest-core'
 }
 
 tasks.named('test') {

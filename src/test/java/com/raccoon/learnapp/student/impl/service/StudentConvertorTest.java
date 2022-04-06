@@ -5,8 +5,8 @@ import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.raccoon.learnapp.student.impl.StudentTestData.EMAIL;
 import static com.raccoon.learnapp.student.impl.StudentTestData.FIRST_NAME;
@@ -19,7 +19,7 @@ import static com.raccoon.learnapp.student.impl.StudentTestData.generateRegistra
 import static com.raccoon.learnapp.student.impl.StudentTestData.generateStudentEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(classes = {MockitoExtension.class})
+@ExtendWith(MockitoExtension.class)
 class StudentConvertorTest {
 
     private StudentConvertor studentConvertor;
