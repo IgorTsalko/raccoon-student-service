@@ -37,10 +37,10 @@ public class StudentEntity extends BaseEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    private String email;
-
     @Column(nullable = false)
     private String login;
+
+    private String email;
 
     @Column(nullable = false)
     private String password;

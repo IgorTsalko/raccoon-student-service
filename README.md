@@ -9,7 +9,9 @@ This is a simple application for additional learning technologies I'm interested
 * Spring Data JPA 
 * Apache Kafka
 * Lombok
+* MapStruct
 
 ### Description
 
 * Database PostgreSQL works on the separate Docker container with the host port 5444
+* For all convertors is used MapStruct

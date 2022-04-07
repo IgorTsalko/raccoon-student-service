@@ -4,6 +4,7 @@ import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
+import com.raccoon.learnapp.student.impl.service.mapper.StudentMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,7 +27,7 @@ class StudentServiceImplTest {
     private StudentRepository studentRepository;
 
     @Mock
-    private StudentConvertor studentConvertor;
+    private StudentMapper studentMapper;
 
     @Test
     void shouldReturnStudents() {
@@ -35,7 +36,7 @@ class StudentServiceImplTest {
         StudentDTO student = new StudentDTO();
 
         when(studentRepository.findAll()).thenReturn(List.of(studentDef));
-        when(studentConvertor.convertToDTO(studentDef)).thenReturn(student);
+        when(studentMapper.convertToDTO(studentDef)).thenReturn(student);
 
         // when
         List<StudentDTO> result = studentService.getStudents();
@@ -43,7 +44,7 @@ class StudentServiceImplTest {
         // then
         assertThat(result).asList().containsExactly(student);
         verify(studentRepository).findAll();
-        verify(studentConvertor).convertToDTO(studentDef);
+        verify(studentMapper).convertToDTO(studentDef);
     }
 
     @Test
@@ -52,13 +53,13 @@ class StudentServiceImplTest {
         StudentRegistrationData registrationData = new StudentRegistrationData();
         StudentEntity studentDef = new StudentEntity();
 
-        when(studentConvertor.convertToEntity(registrationData)).thenReturn(studentDef);
+        when(studentMapper.convertToEntity(registrationData)).thenReturn(studentDef);
 
         // when
         studentService.signUpStudent(registrationData);
 
         // then
-        verify(studentConvertor).convertToEntity(registrationData);
+        verify(studentMapper).convertToEntity(registrationData);
         verify(studentRepository).save(studentDef);
     }
 }
