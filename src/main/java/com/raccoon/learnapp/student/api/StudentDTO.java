@@ -3,7 +3,7 @@ package com.raccoon.learnapp.student.api;
 import lombok.Data;
 
 @Data
-public class Student {
+public class StudentDTO {
     private Long id;
     private String firstName;
     private String lastName;

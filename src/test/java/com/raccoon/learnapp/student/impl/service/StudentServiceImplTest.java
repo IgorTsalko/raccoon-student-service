@@ -1,6 +1,6 @@
 package com.raccoon.learnapp.student.impl.service;
 
-import com.raccoon.learnapp.student.api.Student;
+import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
@@ -32,18 +32,18 @@ class StudentServiceImplTest {
     void shouldReturnStudents() {
         // given
         StudentEntity studentDef = new StudentEntity();
-        Student student = new Student();
+        StudentDTO student = new StudentDTO();
 
         when(studentRepository.findAll()).thenReturn(List.of(studentDef));
-        when(studentConvertor.convert(studentDef)).thenReturn(student);
+        when(studentConvertor.convertToDTO(studentDef)).thenReturn(student);
 
         // when
-        List<Student> result = studentService.getStudents();
+        List<StudentDTO> result = studentService.getStudents();
 
         // then
         assertThat(result).asList().containsExactly(student);
         verify(studentRepository).findAll();
-        verify(studentConvertor).convert(studentDef);
+        verify(studentConvertor).convertToDTO(studentDef);
     }
 
     @Test
@@ -52,13 +52,13 @@ class StudentServiceImplTest {
         StudentRegistrationData registrationData = new StudentRegistrationData();
         StudentEntity studentDef = new StudentEntity();
 
-        when(studentConvertor.convert(registrationData)).thenReturn(studentDef);
+        when(studentConvertor.convertToEntity(registrationData)).thenReturn(studentDef);
 
         // when
         studentService.signUpStudent(registrationData);
 
         // then
-        verify(studentConvertor).convert(registrationData);
+        verify(studentConvertor).convertToEntity(registrationData);
         verify(studentRepository).save(studentDef);
     }
 }

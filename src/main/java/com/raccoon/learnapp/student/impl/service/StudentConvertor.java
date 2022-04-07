@@ -1,6 +1,6 @@
 package com.raccoon.learnapp.student.impl.service;
 
-import com.raccoon.learnapp.student.api.Student;
+import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 import org.springframework.stereotype.Component;
@@ -8,18 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentConvertor {
 
-    public Student convert(StudentEntity entity) {
-        Student student = new Student();
-        student.setId(entity.getId());
-        student.setFirstName(entity.getFirstName());
-        student.setLastName(entity.getLastName());
-        student.setLogin(entity.getLogin());
-        student.setEmail(entity.getEmail());
-        student.setLevel(entity.getLevel());
-        return student;
+    public StudentDTO convertToDTO(StudentEntity entity) {
+        StudentDTO dto = new StudentDTO();
+        dto.setId(entity.getId());
+        dto.setFirstName(entity.getFirstName());
+        dto.setLastName(entity.getLastName());
+        dto.setLogin(entity.getLogin());
+        dto.setEmail(entity.getEmail());
+        dto.setLevel(entity.getLevel());
+        return dto;
     }
 
-    public StudentEntity convert(StudentRegistrationData data) {
+    public StudentEntity convertToEntity(StudentRegistrationData data) {
         StudentEntity entity = new StudentEntity();
         entity.setFirstName(data.getFirstName());
         entity.setLastName(data.getLastName());

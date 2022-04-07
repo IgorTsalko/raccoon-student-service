@@ -1,7 +1,7 @@
 package com.raccoon.learnapp.student.impl.service;
 
 import com.raccoon.learnapp.student.api.StudentService;
-import com.raccoon.learnapp.student.api.Student;
+import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
@@ -21,17 +21,17 @@ public class StudentServiceImpl implements StudentService {
     private final StudentConvertor studentConvertor;
 
     @Override
-    public List<Student> getStudents() {
+    public List<StudentDTO> getStudents() {
         log.debug("Retrieve all users");
         return studentRepository.findAll().stream()
-                .map(studentConvertor::convert)
+                .map(studentConvertor::convertToDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
     public void signUpStudent(StudentRegistrationData data) {
         log.debug("Sign up a new user: {}", data);
-        StudentEntity entity = studentConvertor.convert(data);
+        StudentEntity entity = studentConvertor.convertToEntity(data);
         studentRepository.save(entity);
     }
 }

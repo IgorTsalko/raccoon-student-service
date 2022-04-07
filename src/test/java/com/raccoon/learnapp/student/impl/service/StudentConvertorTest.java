@@ -1,6 +1,6 @@
 package com.raccoon.learnapp.student.impl.service;
 
-import com.raccoon.learnapp.student.api.Student;
+import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +35,7 @@ class StudentConvertorTest {
         StudentEntity entity = generateStudentEntity();
 
         // when
-        Student result = studentConvertor.convert(entity);
+        StudentDTO result = studentConvertor.convertToDTO(entity);
 
         // then
         assertThat(result.getId()).isEqualTo(ID);
@@ -52,7 +52,7 @@ class StudentConvertorTest {
         StudentRegistrationData data = generateRegistrationData();
 
         // when
-        StudentEntity result = studentConvertor.convert(data);
+        StudentEntity result = studentConvertor.convertToEntity(data);
 
         // then
         assertThat(result.getId()).isNull();

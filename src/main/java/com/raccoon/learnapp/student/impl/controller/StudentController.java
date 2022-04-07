@@ -1,7 +1,7 @@
 package com.raccoon.learnapp.student.impl.controller;
 
 import com.raccoon.learnapp.student.api.StudentService;
-import com.raccoon.learnapp.student.api.Student;
+import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping
-    public List<Student> getStudents() {
+    public List<StudentDTO> getStudents() {
         log.debug("Retrieve all users");
         return studentService.getStudents();
     }

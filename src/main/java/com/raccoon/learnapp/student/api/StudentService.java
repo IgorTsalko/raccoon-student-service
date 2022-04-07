@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface StudentService {
 
-    List<Student> getStudents();
+    List<StudentDTO> getStudents();
 
     void signUpStudent(StudentRegistrationData studentRegistrationData);
 }
