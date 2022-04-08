@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> getStudents() {
-        log.debug("Retrieve all users");
+        log.debug("Retrieve all students");
         return studentRepository.findAll().stream()
                 .map(studentMapper::convertToDTO)
                 .collect(Collectors.toList());
@@ -31,8 +31,16 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void signUpStudent(StudentRegistrationData data) {
-        log.debug("Sign up a new user: {}", data);
+        log.debug("Sign up a new student: {}", data);
         StudentEntity entity = studentMapper.convertToEntity(data);
         studentRepository.save(entity);
+    }
+
+    @Override
+    public StudentDTO getStudent(Long id) {
+        log.debug("Retrieve student by id: {}", id);
+        StudentEntity studentEntity = studentRepository.findById(id)
+                .orElseThrow();
+        return studentMapper.convertToDTO(studentEntity);
     }
 }

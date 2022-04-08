@@ -9,4 +9,6 @@ public interface StudentService {
     List<StudentDTO> getStudents();
 
     void signUpStudent(StudentRegistrationData studentRegistrationData);
+
+    StudentDTO getStudent(Long id);
 }
