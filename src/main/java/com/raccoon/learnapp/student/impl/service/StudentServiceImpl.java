@@ -1,5 +1,6 @@
 package com.raccoon.learnapp.student.impl.service;
 
+import com.raccoon.learnapp.student.impl.exception.StudentDoesNotExistException;
 import com.raccoon.learnapp.student.api.StudentService;
 import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
@@ -39,8 +40,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO getStudent(Long id) {
         log.debug("Retrieve student by id: {}", id);
-        StudentEntity studentEntity = studentRepository.findById(id)
-                .orElseThrow();
+        StudentEntity studentEntity = studentRepository.findById(id).orElseThrow(() -> {
+            log.error("Student with id: {} does not exist", id);
+            throw new StudentDoesNotExistException(id);
+        });
         return studentMapper.convertToDTO(studentEntity);
     }
 }
