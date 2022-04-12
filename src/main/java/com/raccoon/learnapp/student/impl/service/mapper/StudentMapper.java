@@ -13,5 +13,5 @@ public interface StudentMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "level", ignore = true)
-    StudentEntity convertToEntity(Student data);
+    StudentEntity convertToEntity(Student student);
 }

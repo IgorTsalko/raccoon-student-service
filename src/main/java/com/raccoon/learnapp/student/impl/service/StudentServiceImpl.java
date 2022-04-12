@@ -31,9 +31,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveStudent(Student data) {
-        log.debug("Sign up a new student: {}", data);
-        StudentEntity entity = studentMapper.convertToEntity(data);
+    public void saveStudent(Student student) {
+        log.debug("Save new student: {}", student);
+        StudentEntity entity = studentMapper.convertToEntity(student);
         studentRepository.save(entity);
     }
 

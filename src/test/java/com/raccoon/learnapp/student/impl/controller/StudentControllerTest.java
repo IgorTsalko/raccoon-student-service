@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 
+import static com.raccoon.learnapp.student.impl.StudentTestData.ID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
@@ -35,5 +36,11 @@ class StudentControllerTest {
         ResponseEntity<Object> result = studentController.signUp(registrationData);
         assertThat(result).isEqualTo(ResponseEntity.noContent().build());
         verify(studentService).saveStudent(registrationData);
+    }
+
+    @Test
+    void getStudentTest() {
+        studentController.getStudent(ID);
+        verify(studentService).getStudent(ID);
     }
 }

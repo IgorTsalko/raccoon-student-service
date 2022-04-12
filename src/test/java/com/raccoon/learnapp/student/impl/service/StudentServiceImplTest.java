@@ -3,6 +3,7 @@ package com.raccoon.learnapp.student.impl.service;
 import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
+import com.raccoon.learnapp.student.impl.exception.StudentDoesNotExistException;
 import com.raccoon.learnapp.student.impl.model.Student;
 import com.raccoon.learnapp.student.impl.service.mapper.StudentMapper;
 import org.junit.jupiter.api.Test;
@@ -12,9 +13,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
+import static com.raccoon.learnapp.student.impl.StudentTestData.ID;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -64,5 +69,27 @@ class StudentServiceImplTest {
         // then
         verify(studentMapper).convertToEntity(student);
         verify(studentRepository).save(studentEntity);
+    }
+
+    @Test
+    void shouldGetStudentById() {
+        // given
+        when(studentRepository.findById(ID)).thenReturn(Optional.of(studentEntity));
+        when(studentMapper.convertToDTO(studentEntity)).thenReturn(studentDTO);
+
+        // when
+        StudentDTO result = studentService.getStudent(ID);
+
+        // then
+        assertThat(result).isEqualTo(studentDTO);
+        verify(studentRepository).findById(ID);
+        verify(studentMapper).convertToDTO(studentEntity);
+    }
+
+    @Test
+    void shouldGetExceptionIfStudentDoesNotExistById() {
+        when(studentRepository.findById(ID)).thenReturn(Optional.empty());
+        assertThrows(StudentDoesNotExistException.class, () -> studentService.getStudent(ID));
+        verifyNoInteractions(studentMapper);
     }
 }
