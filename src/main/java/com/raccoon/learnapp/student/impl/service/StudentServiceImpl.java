@@ -5,7 +5,7 @@ import com.raccoon.learnapp.student.api.StudentService;
 import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
 import com.raccoon.learnapp.student.impl.dao.StudentRepository;
-import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
+import com.raccoon.learnapp.student.impl.model.Student;
 import com.raccoon.learnapp.student.impl.service.mapper.StudentMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void signUpStudent(StudentRegistrationData data) {
+    public void saveStudent(Student data) {
         log.debug("Sign up a new student: {}", data);
         StudentEntity entity = studentMapper.convertToEntity(data);
         studentRepository.save(entity);

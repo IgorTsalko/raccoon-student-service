@@ -1,7 +1,7 @@
 package com.raccoon.learnapp.student.impl.controller;
 
 import com.raccoon.learnapp.student.api.StudentService;
-import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
+import com.raccoon.learnapp.student.impl.model.Student;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ class StudentControllerTest {
     private StudentService studentService;
 
     @Mock
-    private StudentRegistrationData registrationData;
+    private Student registrationData;
 
     @Test
     void getStudentsTest() {
@@ -34,6 +34,6 @@ class StudentControllerTest {
     void signUpTest() {
         ResponseEntity<Object> result = studentController.signUp(registrationData);
         assertThat(result).isEqualTo(ResponseEntity.noContent().build());
-        verify(studentService).signUpStudent(registrationData);
+        verify(studentService).saveStudent(registrationData);
     }
 }

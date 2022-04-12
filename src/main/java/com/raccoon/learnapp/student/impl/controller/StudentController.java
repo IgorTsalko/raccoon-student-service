@@ -2,7 +2,7 @@ package com.raccoon.learnapp.student.impl.controller;
 
 import com.raccoon.learnapp.student.api.StudentService;
 import com.raccoon.learnapp.student.api.StudentDTO;
-import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
+import com.raccoon.learnapp.student.impl.model.Student;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +27,8 @@ public class StudentController {
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<Object> signUp(@RequestBody StudentRegistrationData data) {
-        studentService.signUpStudent(data);
+    public ResponseEntity<Object> signUp(@RequestBody Student data) {
+        studentService.saveStudent(data);
         return ResponseEntity.noContent().build();
     }
 

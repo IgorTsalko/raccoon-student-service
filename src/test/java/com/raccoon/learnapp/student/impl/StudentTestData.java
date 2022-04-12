@@ -1,7 +1,7 @@
 package com.raccoon.learnapp.student.impl;
 
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
-import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
+import com.raccoon.learnapp.student.impl.model.Student;
 
 public class StudentTestData {
 
@@ -24,13 +24,13 @@ public class StudentTestData {
         return entity;
     }
 
-    public static StudentRegistrationData generateRegistrationData() {
-        StudentRegistrationData data = new StudentRegistrationData();
-        data.setFirstName(FIRST_NAME);
-        data.setLastName(LAST_NAME);
-        data.setLogin(LOGIN);
-        data.setEmail(EMAIL);
-        data.setPassword(PASSWORD);
-        return data;
+    public static Student generateStudent() {
+        Student student = new Student();
+        student.setFirstName(FIRST_NAME);
+        student.setLastName(LAST_NAME);
+        student.setLogin(LOGIN);
+        student.setEmail(EMAIL);
+        student.setPassword(PASSWORD);
+        return student;
     }
 }

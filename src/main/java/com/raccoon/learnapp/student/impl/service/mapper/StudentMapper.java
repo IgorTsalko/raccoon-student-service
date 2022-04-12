@@ -2,7 +2,7 @@ package com.raccoon.learnapp.student.impl.service.mapper;
 
 import com.raccoon.learnapp.student.api.StudentDTO;
 import com.raccoon.learnapp.student.impl.dao.entity.StudentEntity;
-import com.raccoon.learnapp.student.impl.model.StudentRegistrationData;
+import com.raccoon.learnapp.student.impl.model.Student;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,5 +13,5 @@ public interface StudentMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "level", ignore = true)
-    StudentEntity convertToEntity(StudentRegistrationData data);
+    StudentEntity convertToEntity(Student data);
 }
