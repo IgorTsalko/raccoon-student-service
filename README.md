@@ -1,17 +1,12 @@
-# Home project
+# Home project - Raccoon learn app
+Simple application for additional learning technologies I'm interested in.
 
-### Raccoon learn app
+### Student microservice
 
-This is a simple application for additional learning technologies I'm interested in.
+What are used
 
 * Docker
 * Spring Boot
-* Spring Data JPA 
-* Apache Kafka
+* Spring Data JPA
 * Lombok
 * MapStruct
-
-### Description
-
-* Database PostgreSQL works on the separate Docker container with the host port 5444
-* For all convertors is used MapStruct
