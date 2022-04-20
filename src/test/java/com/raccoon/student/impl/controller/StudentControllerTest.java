@@ -2,7 +2,7 @@ package com.raccoon.student.impl.controller;
 
 import com.raccoon.student.controller.StudentController;
 import com.raccoon.student.service.StudentService;
-import com.raccoon.student.model.Student;
+import com.raccoon.student.model.NewStudentDTO;
 import com.raccoon.student.impl.StudentTestData;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +24,7 @@ class StudentControllerTest {
     private StudentService studentService;
 
     @Mock
-    private Student student;
+    private NewStudentDTO newStudentDTO;
 
     @Test
     void getStudentsTest() {
@@ -34,9 +34,9 @@ class StudentControllerTest {
 
     @Test
     void saveStudentTest() {
-        ResponseEntity<Object> result = studentController.saveStudent(student);
+        ResponseEntity<Object> result = studentController.saveStudent(newStudentDTO);
         assertThat(result).isEqualTo(ResponseEntity.noContent().build());
-        verify(studentService).saveStudent(student);
+        verify(studentService).saveStudent(newStudentDTO);
     }
 
     @Test

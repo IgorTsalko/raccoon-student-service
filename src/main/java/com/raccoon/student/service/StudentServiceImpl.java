@@ -3,8 +3,8 @@ package com.raccoon.student.service;
 import com.raccoon.student.dao.StudentRepository;
 import com.raccoon.student.dao.entity.StudentEntity;
 import com.raccoon.student.exception.StudentDoesNotExistException;
+import com.raccoon.student.model.NewStudentDTO;
 import com.raccoon.student.model.StudentDTO;
-import com.raccoon.student.model.Student;
 import com.raccoon.student.service.mapper.StudentMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveStudent(Student student) {
+    public void saveStudent(NewStudentDTO student) {
         log.debug("Save new student: {}", student);
         StudentEntity entity = studentMapper.convertToEntity(student);
         studentRepository.save(entity);

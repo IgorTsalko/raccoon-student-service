@@ -1,10 +1,10 @@
 package com.raccoon.student.impl.service;
 
+import com.raccoon.student.model.NewStudentDTO;
 import com.raccoon.student.model.StudentDTO;
 import com.raccoon.student.dao.entity.StudentEntity;
 import com.raccoon.student.dao.StudentRepository;
 import com.raccoon.student.exception.StudentDoesNotExistException;
-import com.raccoon.student.model.Student;
 import com.raccoon.student.service.StudentServiceImpl;
 import com.raccoon.student.service.mapper.StudentMapper;
 import com.raccoon.student.impl.StudentTestData;
@@ -36,7 +36,7 @@ class StudentServiceImplTest {
     private StudentMapper studentMapper;
 
     @Mock
-    private Student student;
+    private NewStudentDTO newStudentDTO;
 
     @Mock
     private StudentEntity studentEntity;
@@ -62,13 +62,13 @@ class StudentServiceImplTest {
     @Test
     void shouldSaveStudent() {
         // given
-        when(studentMapper.convertToEntity(student)).thenReturn(studentEntity);
+        when(studentMapper.convertToEntity(newStudentDTO)).thenReturn(studentEntity);
 
         // when
-        studentService.saveStudent(student);
+        studentService.saveStudent(newStudentDTO);
 
         // then
-        verify(studentMapper).convertToEntity(student);
+        verify(studentMapper).convertToEntity(newStudentDTO);
         verify(studentRepository).save(studentEntity);
     }
 

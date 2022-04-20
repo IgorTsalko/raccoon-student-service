@@ -1,7 +1,7 @@
 package com.raccoon.student.impl;
 
 import com.raccoon.student.dao.entity.StudentEntity;
-import com.raccoon.student.model.Student;
+import com.raccoon.student.model.NewStudentDTO;
 
 public class StudentTestData {
 
@@ -24,13 +24,13 @@ public class StudentTestData {
         return entity;
     }
 
-    public static Student generateStudent() {
-        Student student = new Student();
-        student.setFirstName(FIRST_NAME);
-        student.setLastName(LAST_NAME);
-        student.setLogin(LOGIN);
-        student.setEmail(EMAIL);
-        student.setPassword(PASSWORD);
-        return student;
+    public static NewStudentDTO generateNewStudentDTO() {
+        NewStudentDTO newStudentDTO = new NewStudentDTO();
+        newStudentDTO.setFirstName(FIRST_NAME);
+        newStudentDTO.setLastName(LAST_NAME);
+        newStudentDTO.setLogin(LOGIN);
+        newStudentDTO.setEmail(EMAIL);
+        newStudentDTO.setPassword(PASSWORD);
+        return newStudentDTO;
     }
 }

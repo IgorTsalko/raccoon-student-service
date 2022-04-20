@@ -1,8 +1,8 @@
 package com.raccoon.student.controller;
 
+import com.raccoon.student.model.NewStudentDTO;
 import com.raccoon.student.service.StudentService;
 import com.raccoon.student.model.StudentDTO;
-import com.raccoon.student.model.Student;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +32,7 @@ public class StudentController {
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<Object> saveStudent(@RequestBody Student student) {
+    public ResponseEntity<Object> saveStudent(@RequestBody NewStudentDTO student) {
         studentService.saveStudent(student);
         return ResponseEntity.noContent().build();
     }

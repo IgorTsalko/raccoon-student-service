@@ -1,5 +1,6 @@
 package com.raccoon.student.dao.entity;
 
+import com.raccoon.common.dao.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
